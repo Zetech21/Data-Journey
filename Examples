@@ -1,0 +1,679 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "name": "Untitled6.ipynb",
+      "provenance": [],
+      "authorship_tag": "ABX9TyMJjZ1Wr4ehmGluJnpEIqPR"
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "reEtGMGHyLLr"
+      },
+      "source": [
+        "##Q1. This question tests your understanding of Object-Oriented Programming in Python."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "KgeJzUNVIg2P"
+      },
+      "source": [
+        "###Implement a python class called BankAccount that has a class member variable called interest_rate with default value set to 0.05, and 3 member variables name, number, and balance. [5 marks]"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "59pDZoxwx-3i"
+      },
+      "source": [
+        "class BankAccount():\r\n",
+        "  def __init__(self,Name,Number,balance,Interest_rate=0.05):\r\n",
+        "    self.name = Name\r\n",
+        "    self.number = Number\r\n",
+        "    self.balance = balance\r\n",
+        "    self.interest_rate = Interest_rate"
+      ],
+      "execution_count": 14,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "7KUEViAez0Kh"
+      },
+      "source": [
+        "Abhishek=BankAccount(\"Abhi\",\"100\",\"2000\")"
+      ],
+      "execution_count": 20,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "tHyNyaDG0so_",
+        "outputId": "8124042d-801c-43f6-8d09-aa80214b75c0"
+      },
+      "source": [
+        "Abhishek.interest_rate"
+      ],
+      "execution_count": 21,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "0.05"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 21
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "uM6IWTeQzddY"
+      },
+      "source": [
+        "###Create two instance methods called deposit () and withdraw () which increase and decrease the balance of the account. Ensure that the withdraw () method does not allow the account to go into an overdrawn balance. [5 marks]\r\n",
+        "\r\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "WuLFNlxg081w"
+      },
+      "source": [
+        "class BankAccount():\r\n",
+        "  def __init__(self,Name,Number,balance,Interest_rate=0.05):\r\n",
+        "    self.name = Name\r\n",
+        "    self.number = Number\r\n",
+        "    self.balance = balance\r\n",
+        "    self.interest_rate = Interest_rate\r\n",
+        "\r\n",
+        "  def deposit(self):\r\n",
+        "    amount=float(input(\"Enter amount to be Deposited: \"))\r\n",
+        "    self.balance += amount \r\n",
+        "    print(f\"Amount Deposited:{amount}\")\r\n",
+        "    print(f\"Your Available Balance is {self.balance}\")\r\n",
+        "\r\n",
+        "  def withdraw(self):\r\n",
+        "    amount = float(input(\"Enter amount to be withdrawn: \")) \r\n",
+        "    if self.balance >= amount: \r\n",
+        "      self.balance -= amount \r\n",
+        "      print(f\"You Withdrawal amount is: {amount}\")\r\n",
+        "      print(f\"Your Available Balance is {self.balance}\") \r\n",
+        "    else: \r\n",
+        "      print(\"Your Balance is Insufficent\")\r\n",
+        "      print(f\"Your Available Balance is {self.balance}\")"
+      ],
+      "execution_count": 63,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "5CqZKg0P2P57"
+      },
+      "source": [
+        "Abhishek=BankAccount(\"Abhi\",\"100\",2000)"
+      ],
+      "execution_count": 64,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "BD3AMbPM2Tez",
+        "outputId": "04d8474e-4fa6-4889-af31-63bedfc2863c"
+      },
+      "source": [
+        "Abhishek.deposit()"
+      ],
+      "execution_count": 65,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "Enter amount to be Deposited: 2000\n",
+            "Amount Deposited:2000.0\n",
+            "Your Available Balance is 4000.0\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "1g3Gg-u22gLm",
+        "outputId": "80cff99c-8f6e-4ce8-8197-8642a183b4ae"
+      },
+      "source": [
+        "Abhishek.withdraw()"
+      ],
+      "execution_count": 66,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "Enter amount to be withdrawn: 3000\n",
+            "You Withdrawal amount is: 3000.0\n",
+            "Your Available Balance is 1000.0\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "m-I0iw2o2w4z",
+        "outputId": "307d89ed-0b3f-44df-dd53-54c6840b4fca"
+      },
+      "source": [
+        "Abhishek.withdraw()"
+      ],
+      "execution_count": 67,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "Enter amount to be withdrawn: 5000\n",
+            "Your Balance is Insufficent\n",
+            "Your Available Balance is 1000.0\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "9PtAkFdd4GKT"
+      },
+      "source": [
+        "###Add a third method called add_interest () which adds interest to the balance (the interest should be the interest rate multiplied by the current balance). [5 marks]"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "y54ZG9DD4M3t"
+      },
+      "source": [
+        "class BankAccount():\r\n",
+        "  def __init__(self,Name,Number,balance,Interest_rate=0.05):\r\n",
+        "    self.name = Name\r\n",
+        "    self.number = Number\r\n",
+        "    self.balance = balance\r\n",
+        "    self.interest_rate = Interest_rate\r\n",
+        "\r\n",
+        "  def deposit(self):\r\n",
+        "    amount=float(input(\"Enter amount to be Deposited: \"))\r\n",
+        "    self.balance += amount \r\n",
+        "    print(f\"Amount Deposited:{amount}\")\r\n",
+        "    print(f\"Your Available Balance is {self.balance}\")\r\n",
+        "\r\n",
+        "  def withdraw(self):\r\n",
+        "    amount = float(input(\"Enter amount to be withdrawn: \")) \r\n",
+        "    if self.balance >= amount: \r\n",
+        "      self.balance -= amount \r\n",
+        "      print(f\"You Withdrawal amount is: {amount}\")\r\n",
+        "      print(f\"Your Available Balance is {self.balance}\") \r\n",
+        "    else: \r\n",
+        "      print(\"Your Balance is Insufficent\")\r\n",
+        "      print(f\"Your Available Balance is {self.balance}\")\r\n",
+        "\r\n",
+        "  def add_interest(self):\r\n",
+        "    self.interest_rate = self.balance * self.interest_rate"
+      ],
+      "execution_count": 68,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "9iglssTR48aI"
+      },
+      "source": [
+        "Abhishek=BankAccount(\"Abhi\",\"100\",2000)"
+      ],
+      "execution_count": 69,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "LUDcHymn5A3o"
+      },
+      "source": [
+        "Abhishek.add_interest()"
+      ],
+      "execution_count": 70,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "GGxZNmaB53gw",
+        "outputId": "f6f8fd77-c93b-4770-cfce-056f469956bc"
+      },
+      "source": [
+        "Abhishek.interest_rate"
+      ],
+      "execution_count": 71,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "100.0"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 71
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "7Q3hQbNJ6luP"
+      },
+      "source": [
+        "###Create a subclass of BankAccount called StudentAccount. Every StudentAccount should have an overdraft limit of 100.\r\n",
+        "\r\n",
+        "Write a constructor for the new class.\r\n",
+        "\r\n",
+        "Override the withdraw() method to make sure that students can withdraw money up to their overdraft limits."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "OAP1SQtG6rzn"
+      },
+      "source": [
+        "class StudentAccount(BankAccount):\r\n",
+        "  \r\n",
+        "  def withdraw(self):\r\n",
+        "    student_balance =-100\r\n",
+        "    amount = float(input(\"Enter amount to be withdrawn: \")) \r\n",
+        "    if (self.balance - amount) >= student_balance:\r\n",
+        "      self.balance -= amount\r\n",
+        "      print(f\"You Withdrawal amount is: {amount}\")\r\n",
+        "      print(f\"Your Available Balance is {self.balance}\")\r\n",
+        "    else: \r\n",
+        "      print(\"Your Balance is Insufficent\")\r\n",
+        "      print(f\"Your Available Balance is {self.balance}\")"
+      ],
+      "execution_count": 154,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "D5jKoFQR-JR1",
+        "outputId": "89ef78c0-70cf-4697-8114-8000adbfe317"
+      },
+      "source": [
+        "Abhishek=BankAccount(\"Abhi\",\"100\",2000)\r\n",
+        "Abhishek.balance"
+      ],
+      "execution_count": 132,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "2000"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 132
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "RiZaAMov_MIt",
+        "outputId": "9ab5c5e6-5eab-4b45-e00d-4632d5dcee6f"
+      },
+      "source": [
+        "Abhishek.withdraw()"
+      ],
+      "execution_count": 155,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "Enter amount to be withdrawn: 100\n",
+            "You Withdrawal amount is: 100.0\n",
+            "Your Available Balance is 1900.0\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "WDDCcSMw-KFK"
+      },
+      "source": [
+        "Samuel=StudentAccount(\"Samuel\",\"08139031389\",1000)"
+      ],
+      "execution_count": 163,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "_PTkP8kX-J5E",
+        "outputId": "e0a4f5ae-7a8d-4bde-e70c-f1971b85b0dd"
+      },
+      "source": [
+        "Samuel.withdraw()"
+      ],
+      "execution_count": 169,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "Enter amount to be withdrawn: 20\n",
+            "Your Balance is Insufficent\n",
+            "Your Available Balance is -100.0\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "1C-Mb4FXH8KS"
+      },
+      "source": [
+        "##Q2. This question tests your understanding of map, reduce, filter, list comprehension, and generators in Python.\r\n",
+        "\r\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "9aqwPQDxIbZ3"
+      },
+      "source": [
+        "###A. Implement a python function to sum the number of integers from 1 to a given number n."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "S-Q7Yp3pIc88"
+      },
+      "source": [
+        "def Sum_integers(n):\r\n",
+        "  sum_integer = 0\r\n",
+        "  i=0\r\n",
+        "  #replace this pass (a do-nothing) statement with your code\r\n",
+        "  while i <= n:\r\n",
+        "    sum_integer = sum_integer + i\r\n",
+        "    print(sum_integer)\r\n",
+        "    i+=1\r\n",
+        "  return sum_integer"
+      ],
+      "execution_count": 172,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "-VvugO-_JHhq",
+        "outputId": "4253f333-ea85-4f38-851e-75243f3bd4e0"
+      },
+      "source": [
+        "Sum_integers(5)"
+      ],
+      "execution_count": 176,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "0\n",
+            "1\n",
+            "3\n",
+            "6\n",
+            "10\n",
+            "15\n"
+          ],
+          "name": "stdout"
+        },
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "15"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 176
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "R24J9IlCJaOB"
+      },
+      "source": [
+        "###Translate the following for loop into a while loop (which does the same thing as the for loop):\r\n",
+        "###def print_to_number ():\r\n",
+        "  ### for i in range (1,10):\r\n",
+        "###       print \"i = \", I [4 marks]\r\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "bwqJK_SwJhzG"
+      },
+      "source": [
+        "def print_to_number():\r\n",
+        "\r\n",
+        "    for i in range(1,10):\r\n",
+        "\r\n",
+        "        print (\"i = \",i)"
+      ],
+      "execution_count": 178,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "tdjfk4JiJ1xO",
+        "outputId": "e17cb316-3b21-4742-b705-6fd1f30ecfd8"
+      },
+      "source": [
+        "print_to_number()"
+      ],
+      "execution_count": 180,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "i =  1\n",
+            "i =  2\n",
+            "i =  3\n",
+            "i =  4\n",
+            "i =  5\n",
+            "i =  6\n",
+            "i =  7\n",
+            "i =  8\n",
+            "i =  9\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "Dxcsdi9xJ_oX"
+      },
+      "source": [
+        "def print_to_number():\r\n",
+        "  i=int(input(\"Input your starting number: \"))\r\n",
+        "  n = int(input(\"input your ending number: \"))\r\n",
+        "  print (\"i = \",i)\r\n",
+        "  while i < n-1:\r\n",
+        "    i = i+1\r\n",
+        "    print (\"i = \",i)"
+      ],
+      "execution_count": 198,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "J9qtHEf5KkHq",
+        "outputId": "eba222a3-dd62-4d8f-cd63-bab1a7f6c044"
+      },
+      "source": [
+        "print_to_number()"
+      ],
+      "execution_count": 200,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "Input your starting number: 1\n",
+            "input your ending number: 10\n",
+            "i =  1\n",
+            "i =  2\n",
+            "i =  3\n",
+            "i =  4\n",
+            "i =  5\n",
+            "i =  6\n",
+            "i =  7\n",
+            "i =  8\n",
+            "i =  9\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "xt3BkqGmL2Xs"
+      },
+      "source": [
+        "###C. Implement a python filter function in Python that will receive a list of the first 25 natural numbers and will return a filtered list of the numbers that are perfect squares, i.e. 1, 4, 9, 16, 25\r\n",
+        "###Implement a generator function in python that will calculate perfect square numbers."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "Fdm0zswYL6AF"
+      },
+      "source": [
+        "def P_Sqaure_Test():\r\n",
+        "  def is_perfect_square(n):\r\n",
+        "    return round(n ** 0.5) ** 2 == n\r\n",
+        "  Perfect_Square_test = []\r\n",
+        "  i=int(input(\"Input your starting number: \"))\r\n",
+        "  n = int(input(\"input your ending number: \"))\r\n",
+        "  for i in range (i,n+1):\r\n",
+        "    Perfect_Square_test.append(i)\r\n",
+        "  #print(list)\r\n",
+        "  a = list(filter(is_perfect_square, Perfect_Square_test))\r\n",
+        "  print(a)"
+      ],
+      "execution_count": 232,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "GY47mVZoVGsA",
+        "outputId": "8e587f38-e7d4-4bbc-9534-accdb65f20de"
+      },
+      "source": [
+        "P_Sqaure_Test()"
+      ],
+      "execution_count": 234,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "Input your starting number: 500\n",
+            "input your ending number: 2500\n",
+            "[529, 576, 625, 676, 729, 784, 841, 900, 961, 1024, 1089, 1156, 1225, 1296, 1369, 1444, 1521, 1600, 1681, 1764, 1849, 1936, 2025, 2116, 2209, 2304, 2401, 2500]\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    }
+  ]
+}
